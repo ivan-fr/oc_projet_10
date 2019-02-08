@@ -3,6 +3,7 @@ python:
   - "3.6.2"
 
 before_script:
+  - psql -c "CREATE USER besevic WITH PASSWORD 'hWfY7Uv82k7L9f2Sr._.';" -U postgres
   - pip install -r requirements.txt
 
 branches:
