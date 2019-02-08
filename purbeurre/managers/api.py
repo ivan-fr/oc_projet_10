@@ -4,9 +4,6 @@ import urllib.parse
 import json
 from purbeurre.utils import get_words_from_sentence
 from django.utils.text import slugify
-import logging
-
-logger = logging.getLogger(__name__)
 
 
 class ApiManager:
@@ -33,7 +30,6 @@ class ApiManager:
         products = []
         url = cls.search_url + '?' + payload
         with urllib.request.urlopen(url) as response:
-            logger.error(response.geturl())
             if response.geturl() != url:
                 bar_code = re.search(
                     r'^/(produit|product)/(\d+)/?[0-9a-zA-Z_\-]*/?$',
@@ -41,7 +37,6 @@ class ApiManager:
 
                 with urllib.request.urlopen(
                         cls.product_url.format(bar_code)) as response2:
-                    logger.error(response2.geturl())
                     _dict = json.loads(response2.read().decode('utf8'))
                     if _dict.get('product', None):
                         products = (_dict['product'],)
@@ -69,7 +64,6 @@ class ApiManager:
 
         url = cls.marks_for_a_category_url.format(category)
         with urllib.request.urlopen(url) as response:
-            logger.error(response.geturl())
             if response.geturl() != url:
                 category = re.search(r'^/categorie/([0-9a-z_\-]*).json$',
                                      urllib.parse.urlparse(
@@ -78,7 +72,6 @@ class ApiManager:
                 with urllib.request.urlopen(
                         cls.marks_for_a_category_url.format(
                             category)) as response2:
-                    logger.error(response2.geturl())
                     result = json.loads(response2.read().decode('utf8'))
             else:
                 result = json.loads(response.read().decode('utf8'))
@@ -93,7 +86,6 @@ class ApiManager:
                                                    result['tags'][imark]['id'])
 
                 with urllib.request.urlopen(url) as response:
-                    logger.error(response.geturl())
                     result_substitutes = json.loads(
                         response.read().decode('utf8'))
 
@@ -118,7 +110,6 @@ class ApiManager:
 
         with urllib.request.urlopen(
                 cls.product_url.format(bar_code)) as response:
-            logger.error(response.geturl())
             _dict = json.loads(response.read().decode('utf8'))
             if _dict.get('product', None):
                 product = _dict['product']
