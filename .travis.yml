@@ -3,6 +3,7 @@ python:
   - "3.6.2"
 
 before_script:
+  - psql -c 'create database travis_ci_test;' -U postgres
   - psql -c "CREATE USER besevic WITH PASSWORD 'hWfY7Uv82k7L9f2Sr._.';" -U postgres
   - pip install -r requirements.txt
 
@@ -16,5 +17,6 @@ services:
   - postgresql
 
 script:
+  - python manage.py makemigrations
   - python manage.py migrate
   - python manage.py test
