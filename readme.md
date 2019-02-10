@@ -255,7 +255,7 @@ Créer la tâche planifiée :
 
 	$crontab -e
 
-Ajout des deux lignes suivantes dans l'éditeur qui vient de s'ouvrir.
+Ajout de la ligne suivante dans l'éditeur qui vient de s'ouvrir.
 	
 	00 00 * * 0 /usr/local/bin/update_db.sh
 
