@@ -1,9 +1,10 @@
 from django.core.management.base import BaseCommand
-from purbeurre.models import Brand, Ingredient, Store, Category, Product
-from purbeurre.managers.api import ApiManager
-from django.db import transaction
 from django.db import connection
 from django.db import reset_queries
+from django.db import transaction
+
+from purbeurre.managers.api import ApiManager
+from purbeurre.models import Brand, Ingredient, Store, Category, Product
 
 
 class Command(BaseCommand):
@@ -42,12 +43,15 @@ class Command(BaseCommand):
                 categories, categories_temoin = [], []
                 categories_of_product = Category.objects.filter(
                     product=product_db)
+
                 for category in product_from_api.get('categories', ()):
+                    self.stdout.write(self.style.SUCCESS('lol'))
                     category_db, created = Category.objects.get_or_create(
                         name=category)
                     if category_db not in categories_of_product:
                         categories.append(category_db)
                     categories_temoin.append(category_db)
+
                 product_db.categories.add(*categories)
 
                 product_db.categories.remove(

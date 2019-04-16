@@ -6,12 +6,13 @@
 * Création d'une Virtual Machnine (ec2) avec aws d'amazon.
 * Installation d'Ubuntu 18.04 sur la VM.
 * Mise à jour des paquets , installation de python et postgres.
-* Création de l'environnement virtuel ```sudo apt install virtualenv`` puis ```virtualenv env -p python3```
+* Création de l'environnement virtuel ``sudo apt install virtualenv`` puis ```virtualenv env -p python3```
 * Clonage des données de l'application ```git clone https://github.com/ivan-fr/oc_projet_10.git```Installation des dépendances : ```pip install -r requirements.txt```
 * Création de base de données : ```$sudo -u postgres createdb purbeurre``` . Création de l'utilisateur ```$sudo -u postgres createuser --interactive```
 * Ajout des variables d’environnement ( DJANGO\_SETTINGS\_MODULE) au chargement de la session utilisateur ubuntu.
-	
-	export DJANGO\_SETTINGS\_MODULE="oc_projet_8.settings.production"
+
+
+    export DJANGO\_SETTINGS\_MODULE="oc_projet_8.settings.production"
 
 ### Création de la configuration de production 
 Créer un fichier "production.py" dans oc_projet_10/oc_projet_8/settings/production.py
@@ -62,7 +63,7 @@ Edition et ecriture avec vim ```sudo vi /etc/nginx/sites-available/oc_projet_8``
 	
 Création du lien vers ```/etc/nginx/sites_enabled``` pour activer le vhost
 
-	/etc/nginx$ ln -s sites-available/oc_projet_8 sites-enabled/
+	/etc/nginx$ sudo ln -s /etc/nginx/sites-available/oc_projet_8 /etc/nginx/sites-enabled
 
 Nous rechargeons la configuration du serveur
 
@@ -153,7 +154,7 @@ Sur notre environnement local , au même niveau que manage.py , nous créons un 
 ![hist](https://i.imgur.com/nyNssRA.png)
 
 ## Monitorer le serveur : mise en place de Newrelic
-[Newrelic Infrastructure](https://infrastructure.eu.newrelic.com) offre la possibilité de monitorer notre serveur : Etat de la CPU , de la mémoire vive, le load average etc....
+[Newrelic Infrastructure](https://infrastructure.eu.newrelic.com) offre la possibilité de monitorer notre serveur : Etat de la CPU , de la mémoire vive, le load average etc.
 
 * Création d'un compte sur New Relic
 * Sur le site Infrastructure/All Host/Add host
@@ -260,3 +261,6 @@ Ajout de la ligne suivante dans l'éditeur qui vient de s'ouvrir.
 	00 00 * * 0 /usr/local/bin/update_db.sh
 
 La tâche s’exécutera tous les dimanches à minuit.
+On rafraichit le cron via la commande ci-dessous pour être sûr que la tâche s'éxecute.
+
+    sudo service cron restart
