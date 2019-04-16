@@ -248,15 +248,27 @@ Changement des droits d'accès :
 	$ sudo -s
 	$ vim update_database.sh
 
-Rendre le script exécutable :
+Dans update_database.sh j'écris :
+
+    #!/bin/bash
+    source /home/ubuntu/env/bin/activate
+    export DJANGO_SETTINGS_MODULE="oc_projet_8.settings.production"
+    python /home/ubuntu/oc_projet_10/manage.py update_db > /var/log/oc_projet_10/update_db.log
+    deactivate
+    exit
+
+Pour pouvoir éxecuter python manage.py update_db
+    
+
+Ensuite je rends le script exécutable :
 
 	/usr/local/bin# chmod +x update_db.sh
 
-Créer la tâche planifiée :
+Je crée la tâche planifiée :
 
 	$crontab -e
 
-Ajout de la ligne suivante dans l'éditeur qui vient de s'ouvrir.
+j'ajoute la ligne suivante dans l'éditeur qui vient de s'ouvrir.
 	
 	00 00 * * 0 /usr/local/bin/update_db.sh
 

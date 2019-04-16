@@ -45,6 +45,7 @@ class Command(BaseCommand):
                     product=product_db)
 
                 for category in product_from_api.get('categories', ()):
+                    self.stdout.write(self.style.SUCCESS('lol'))
                     category_db, created = Category.objects.get_or_create(
                         name=category)
                     if category_db not in categories_of_product:
