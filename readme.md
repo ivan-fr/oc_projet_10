@@ -3,7 +3,7 @@
 ### [Site internet déployé.](http://18.188.245.231)
 
 ## Choix technologiques et étapes d'installation
-* Création d'une Virtual Machnine (ec2) avec aws d'amazon.
+* Création d'une Virtual Machine (ec2) avec aws d'amazon.
 * Installation d'Ubuntu 18.04 sur la VM.
 * Mise à jour des paquets , installation de python et postgres.
 * Création de l'environnement virtuel ``sudo apt install virtualenv`` puis ```virtualenv env -p python3```
@@ -207,7 +207,7 @@ Le programme est une tâche personnalisée Django : elle se lance donc avec la c
 
 	(env)$python manage.py update_db
 
-Nous récucupérons la liste de tout les produits enregistrer dans la base de données et la comparons avec le produit
+Nous récupérons la liste de tout les produits enregistrer dans la base de données et la comparons avec le produit
 correspondant dans openfoodfacts.
 
 Extrait de code :
