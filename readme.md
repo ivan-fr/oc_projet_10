@@ -159,7 +159,7 @@ Sur notre environnement local , au même niveau que manage.py , nous créons un 
 * Création d'un compte sur New Relic
 * Sur le site Infrastructure/All Host/Add host
 
-![nr](https://github.com/horlas/OC_Project10/blob/master/images/Capture%20du%202018-11-29%2010-10-30.png)
+![nr](https://i.imgur.com/HEAphxk.png)
 
 Suivre les instructions:
 
