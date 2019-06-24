@@ -167,8 +167,6 @@ Suivre les instructions:
 * Installation de Newrelic avec cette nouvelle lincence: charger le dépôt d'installation de Newrelic, et installation du paquet.
 * Dorénavant le monitoring de notre système peut se surveiller depuis la plateforme New Relic :
 
-![monito](https://github.com/horlas/OC_Project10/blob/master/images/Capture%20du%202018-11-29%2011-30-20.png)
-
 ## Surveillance de l'application Django oc_projet_10 : Sentry
 * Création d'un compte puis création d'un projet Django nommé oc_projet_10.
 
